@@ -19,7 +19,7 @@ class Asset {
     }
 
     public String getAssetId() {
-        return this.assetId;
+        return assetId;
     }
 
     public void setAssetId(String assetId) {
@@ -52,63 +52,49 @@ class Asset {
 class Resources {
 
     public static int getMonth(String month) {
-        int value = 0;
+
         switch (month) {
             case "Jan":
-                value = 1;
-                break;
-            // return 1;
+                return 1;
 
             case "Feb":
-                value = 2;
-                break;
+                return 2;
 
             case "Mar":
-                value = 3;
-                break;
+                return 3;
 
             case "Apr":
-                value = 4;
-                break;
+                return 4;
 
             case "May":
-                value = 5;
-                break;
+                return 5;
 
             case "Jun":
-                value = 6;
-                break;
+                return 6;
 
             case "Jul":
-                value = 7;
-                break;
+                return 7;
 
             case "Aug":
-                value = 8;
-                break;
+                return 8;
 
             case "Sep":
-                value = 9;
-                break;
+                return 9;
 
             case "Oct":
-                value = 10;
-                break;
+                return 10;
 
             case "Nov":
-                value = 11;
-                break;
+                return 11;
 
             case "Dec":
-                value = 12;
-                break;
+                return 12;
 
             default:
-                value = 0;
-                break;
+                return 0;
 
         }
-        return value;
+
     }
 }
 
@@ -146,27 +132,22 @@ abstract class Employee {
     }
 
     public Employee(String employeeName) {
-        // this.employeeName = employeeName;
 
-        // String regex = "^[A-Z][a-z]{1,}[\\s][A-Z][a-z]{0-9}";
-        // Pattern pattern = Pattern.compile(regex);
-        // Matcher matcher = pattern.matcher(employeeName);
-
-        // if (!matcher.matches()) {
-        // this.employeeName = null;
-        // // return false;
-        // }
+        Pattern pattern = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher matcher = pattern.matcher(employeeName);
 
         String[] words = employeeName.split(" ");
 
-        if (words.length < 2) {
-            setEmployeeName(null);
-        } else {
-            for (int i = 0; i < words.length; i++) {
-                if (words[i].length() < 2) {
-                    setEmployeeName("null");
-                } else {
-                    setEmployeeName(employeeName);
+        if (matcher.matches()) {
+            if (words.length < 2) {
+                setEmployeeName(null);
+            } else {
+                for (int i = 0; i < words.length; i++) {
+                    if (words[i].length() < 2) {
+                        setEmployeeName(null);
+                    } else {
+                        setEmployeeName(employeeName);
+                    }
                 }
             }
         }
